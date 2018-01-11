@@ -8,10 +8,9 @@ import {
   View,
 } from 'react-native';
 import Expo, { WebBrowser } from 'expo';
+import { onSignIn } from '../auth';
 
-import { MonoText } from '../components/StyledText';
-
-export default class HomeScreen extends React.Component {
+export default class LoginScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -22,6 +21,7 @@ export default class HomeScreen extends React.Component {
     })
       .then((response) => {
         const { type, token } = response;
+        console.log(`Access token is ${token}`)
         if (type === 'success') {
           fetch(`https://graph.facebook.com/me?access_token=${token}`)
             .then((data) => {
@@ -30,6 +30,7 @@ export default class HomeScreen extends React.Component {
                 `Hi ${(data.json()).name}!`,
               );
               console.log(data);
+              onSignIn().then(() => this.props.navigation.navigate('SignedIn'));
             },
             );
         }
@@ -49,7 +50,7 @@ export default class HomeScreen extends React.Component {
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
           <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
+            <Text style={styles.codeHighlightText}>navigation/MainTabNavigator.js</Text>
           </View>
         </View>
       </View>
