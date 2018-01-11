@@ -8,6 +8,7 @@ import Colors from '../constants/Colors';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import Discover from '../screens/Discover';
 
 export default TabNavigator(
   {
@@ -20,6 +21,9 @@ export default TabNavigator(
     Settings: {
       screen: SettingsScreen,
     },
+    Discover: {
+      screen: Discover,
+    }
   },
   {
     navigationOptions: ({ navigation }) => ({
@@ -35,6 +39,9 @@ export default TabNavigator(
             break;
           case 'Links':
             iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
+            break;
+          case 'Discover':
+            iconName = Platform.OS === 'ios' ? `ios-compass${focused ? '' : '-outline'}` : 'md-link';
             break;
           case 'Settings':
             iconName =
