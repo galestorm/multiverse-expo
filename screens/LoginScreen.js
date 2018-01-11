@@ -21,7 +21,7 @@ export default class LoginScreen extends React.Component {
     })
       .then((response) => {
         const { type, token } = response;
-        console.log(`Access token is ${token}`)
+        console.log(`Access token is ${token}`);
         if (type === 'success') {
           fetch(`https://graph.facebook.com/me?access_token=${token}`)
             .then((data) => {
