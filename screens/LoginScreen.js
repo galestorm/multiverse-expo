@@ -21,18 +21,21 @@ export default class LoginScreen extends React.Component {
     })
       .then((response) => {
         const { type, token } = response;
-        console.log(`Access token is ${token}`);
         if (type === 'success') {
           fetch(`https://graph.facebook.com/me?access_token=${token}`)
             .then((data) => {
-              Alert.alert(
-                'Logged in!',
-                `Hi ${(data.json()).name}!`,
-              );
-              console.log(data);
-              onSignIn().then(() => this.props.navigation.navigate('SignedIn'));
-            },
-            );
+              // Alert.alert(
+              //   'Logged in!',
+              // );
+              const parsed = data.json()
+                .then((parsed) => {
+                  console.log(parsed)
+                  onSignIn()
+                    .then(() => { this.props.navigation.navigate('SignedIn') })
+                },
+              )
+            }
+          )
         }
       });
   }
