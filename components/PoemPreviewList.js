@@ -47,9 +47,26 @@ class PoemPreviewList extends Component {
     } else {
       return (
         <View style={styles.container}>
-          <View style={styles.card}>
-            <Text style={styles.text}>"People live a poem every minute they spend in the world." - June Jordan</Text>
-          </View>
+          <Swiper
+            cards={['...']}
+            renderCard={(card) => {
+              return (
+                <View style={styles.card}>
+                  <Text style={styles.text}>{card}</Text>
+                </View>
+              );
+            }}
+            onSwiped={(cardIndex) => { console.log(cardIndex); }}
+            onSwipedAll={() => { console.log('onSwipedAll'); }}
+            onSwipedRight={(cardIndex) => {
+              return (
+                <PoemDetail />
+              );
+            }}
+            cardIndex={0}
+            backgroundColor="#4FD0E9"
+          >
+          </Swiper>
         </View>
       );
     }
