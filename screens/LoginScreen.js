@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import Expo, { WebBrowser } from 'expo';
+import axios from 'axios';
 import { onSignIn } from '../auth';
 
 export default class LoginScreen extends React.Component {
@@ -24,18 +25,16 @@ export default class LoginScreen extends React.Component {
         if (type === 'success') {
           fetch(`https://graph.facebook.com/me?access_token=${token}`)
             .then((data) => {
-              // Alert.alert(
-              //   'Logged in!',
-              // );
-              const parsed = data.json()
+              data.json()
                 .then((parsed) => {
-                  console.log(parsed)
-                  onSignIn()
-                    .then(() => { this.props.navigation.navigate('SignedIn') })
-                },
-              )
-            }
-          )
+                  axios.post(`http://localhost:3000/users?uid=${parsed.id}&name=${parsed.name}`)
+                    .then(() => {
+                        Alert.alert(`Welcome, ${parsed.name}`);
+                        onSignIn()
+                          .then(() => { this.props.navigation.navigate('SignedIn'); });
+                    })
+                });
+            });
         }
       });
   }
@@ -46,7 +45,8 @@ export default class LoginScreen extends React.Component {
         <View>
           <Button
             onPress={this.logIn.bind(this)}
-            title='Log in with Facebook' />
+            title='Log in with Facebook'
+          />
         </View>
 
         <View style={styles.tabBarInfoContainer}>
@@ -74,13 +74,12 @@ export default class LoginScreen extends React.Component {
           tools. {learnMoreButton}
         </Text>
       );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
     }
+    return (
+      <Text style={styles.developmentModeText}>
+        You are not in development mode, your app will run at full speed.
+      </Text>
+    );
   }
 
   _handleLearnMorePress = () => {
