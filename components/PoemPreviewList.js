@@ -16,8 +16,9 @@ class PoemPreviewList extends Component {
     });
   }
 
-  openPoemDetailsScreen() {
-    this.props.navigate('PoemDetails');
+  openPoemDetailsScreen(cardIndex) {
+    const poem = this.state.poems[cardIndex];
+    this.props.navigate('PoemDetails', { poem: poem });
   }
 
   render() {
@@ -36,7 +37,7 @@ class PoemPreviewList extends Component {
             }}
             onSwiped={(cardIndex) => { console.log(cardIndex); }}
             onSwipedAll={() => { console.log('onSwipedAll'); }}
-            onSwipedRight={() => this.openPoemDetailsScreen()}
+            onSwipedRight={(cardIndex) => this.openPoemDetailsScreen(cardIndex)}
             cardIndex={0}
             backgroundColor="#4FD0E9"
           >
