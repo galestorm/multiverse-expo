@@ -1,8 +1,8 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-
 import MainTabNavigator from './MainTabNavigator';
 import LoginScreen from '../screens/LoginScreen';
+import PoemDetails from '../screens/PoemDetails';
 
 export const SignedOut = StackNavigator({
   Login: {

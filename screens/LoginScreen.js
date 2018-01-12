@@ -30,7 +30,7 @@ export default class LoginScreen extends React.Component {
                   axios.post(`http://localhost:3000/users?uid=${parsed.id}&name=${parsed.name}`)
                     .then(() => {
                         Alert.alert(`Welcome, ${parsed.name}`);
-                        onSignIn()
+                        onSignIn(parsed.id)
                           .then(() => { this.props.navigation.navigate('SignedIn'); });
                     })
                 });

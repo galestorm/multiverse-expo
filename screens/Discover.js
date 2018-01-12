@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import axios from 'axios';
-import Header from '../components/Header';
 import PoemPreviewList from '../components/PoemPreviewList';
 
 class Discover extends Component {
@@ -29,11 +28,9 @@ class Discover extends Component {
   }
 
   render() {
-    console.log(`in index.js, state is ${this.state.poems.length}`);
     return (
       <View>
-        <Header headerText="Poems" />
-        <PoemPreviewList poems={this.state.poems} />
+        <PoemPreviewList poems={this.state.poems} navigate={this.props.navigation.navigate}/>
       </View>
     );
   }
