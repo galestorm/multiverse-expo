@@ -48,11 +48,11 @@ class PoemPreviewList extends Component {
       return (
         <View style={styles.container}>
           <Swiper
-            cards={['...']}
+            cards={[]}
             renderCard={(card) => {
               return (
                 <View style={styles.card}>
-                  <Text style={styles.text}>{card}</Text>
+                  <Text style={styles.text}>...</Text>
                 </View>
               );
             }}
