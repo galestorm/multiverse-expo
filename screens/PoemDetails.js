@@ -19,7 +19,9 @@ class PoemDetail extends Component {
         console.log(`saving poem: user is ${uid} and poem is ${this.poem.id}`)
         axios.post(`http://localhost:3000/saved_poems?uid=${uid}&poem_id=${this.poem.id}`)
         .then((response) => {
-            Alert.alert(`${response.status}`)
+          if(response.status == 200) {
+            Alert.alert(`Successfully saved poem!`)
+          }
         })
       })
   }
