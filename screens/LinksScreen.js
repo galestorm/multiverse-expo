@@ -9,7 +9,7 @@ export default class LinksScreen extends React.Component {
 
   render() {
     return (
-      <Button title="details" onPress={this.props.navigation.navigate('PoemDetails')}/>
+      null
     );
   }
 }
