@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import Card from '../components/Card';
+import CardSection from '../components/CardSection';
 
 class PoemDetail extends Component {
   constructor(props) {
@@ -10,17 +12,32 @@ class PoemDetail extends Component {
   }
   render() {
     return (
-      <View style={styles.detailContainer}>
-        <Text>{this.poem.title}</Text>
-      </View>
+      <Card>
+        <CardSection>
+          <View style={styles.headerContentStyle}>
+            <Text style={styles.headerTextStyle}>{this.poem.title}</Text>
+            <Text>{this.poem.author}</Text>
+          </View>
+        </CardSection>
+        <CardSection>
+          <Text>{this.poem.lines}</Text>
+        </CardSection>
+        <CardSection>
+          <Text>{this.poem.source}</Text>
+        </CardSection>
+      </Card>
     );
   }
 }
 
 const styles = {
-  detailContainer: {
-    marginTop: 50,
+  headerContentStyle: {
+    flexDirection: 'column',
+    justifyContent: 'space-around'
   },
-};
+  headerTextStyle: {
+    fontSize: 18
+  },
+}
 
 export default PoemDetail;
