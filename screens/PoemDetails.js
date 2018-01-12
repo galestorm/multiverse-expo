@@ -6,10 +6,9 @@ class PoemDetail extends Component {
   render() {
     return (
       <View style={styles.detailContainer}>
-        <Text>Details
-        </Text>
+        <Text>Details</Text>
       </View>
-    )
+    );
   }
 }
 

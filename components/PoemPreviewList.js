@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import Swiper from './Swiper';
-import PoemDetail from './PoemDetail';
 
 class PoemPreviewList extends Component {
   constructor(props) {

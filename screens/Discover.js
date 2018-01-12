@@ -30,7 +30,7 @@ class Discover extends Component {
   render() {
     return (
       <View>
-        <PoemPreviewList poems={this.state.poems} navigate={this.props.navigation.navigate}/>
+        <PoemPreviewList poems={this.state.poems} navigate={this.props.navigation.navigate} />
       </View>
     );
   }

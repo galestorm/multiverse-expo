@@ -2,7 +2,6 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import LoginScreen from '../screens/LoginScreen';
-import PoemDetails from '../screens/PoemDetails';
 
 export const SignedOut = StackNavigator({
   Login: {
@@ -21,20 +20,20 @@ export const createRootNavigator = (signedIn = false) => {
       SignedIn: {
         screen: SignedIn,
         navigationOptions: {
-          gesturesEnabled: false
-        }
+          gesturesEnabled: false,
+        },
       },
       SignedOut: {
         screen: SignedOut,
         navigationOptions: {
-          gesturesEnabled: false
-        }
-      }
+          gesturesEnabled: false,
+        },
+      },
     },
     {
       headerMode: 'none',
       mode: 'modal',
-      initialRouteName: signedIn ? 'SignedIn' : 'SignedOut'
-    }
+      initialRouteName: signedIn ? 'SignedIn' : 'SignedOut',
+    },
   );
 };
