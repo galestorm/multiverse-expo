@@ -4,7 +4,7 @@ import axios from 'axios';
 import PoemPreviewList from '../components/PoemPreviewList';
 
 class Discover extends Component {
-  state = { poems: [], lat: null, lng: null };
+  state = { poems: [], lat: null, lng: null, saved_poems: [] };
 
   componentWillMount() {
     const getPoems = () => {

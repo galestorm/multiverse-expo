@@ -5,7 +5,7 @@ import { TabNavigator, StackNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import LinksScreen from '../screens/LinksScreen';
+import SavedPoemsScreen from '../screens/SavedPoemsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import Discover from '../screens/Discover';
 import PoemDetails from '../screens/PoemDetails';
@@ -35,8 +35,8 @@ export default TabNavigator(
     DiscoverStackNavigator: {
       screen: DiscoverStackNavigator,
     },
-    Links: {
-      screen: LinksScreen,
+    SavedPoems: {
+      screen: SavedPoemsScreen,
     },
     Settings: {
       screen: SettingsScreen,
@@ -54,8 +54,8 @@ export default TabNavigator(
                 ? `ios-information-circle${focused ? '' : '-outline'}`
                 : 'md-information-circle';
             break;
-          case 'Links':
-            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
+          case 'SavedPoems':
+            iconName = Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-link';
             break;
           case 'DiscoverStackNavigator':
             iconName = Platform.OS === 'ios' ? `ios-compass${focused ? '' : '-outline'}` : 'md-link';
