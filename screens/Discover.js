@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, AsyncStorage} from 'react-native';
 import axios from 'axios';
 import PoemPreviewList from '../components/PoemPreviewList';
 
@@ -26,6 +26,20 @@ class Discover extends Component {
       getPoems();
     });
   }
+
+  // updateSavedPoems() {
+  //   console.log(`updating state on the discover screen!`)
+  //   AsyncStorage.getItem('uid')
+  //     .then((uid) => {
+  //       axios.get(`http://localhost:3000/saved_poems?uid=${uid}`)
+  //         .then((response) => {
+  //           this.setState({ saved_poems: response.data })
+  //             .then(() => {
+  //               AsyncStorage.setItem('saved_poems', this.state.saved_poems)
+  //             });
+  //         });
+  //     });
+  // }
 
   render() {
     return (

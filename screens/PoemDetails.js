@@ -14,10 +14,10 @@ class PoemDetail extends Component {
     this.poem = { title, author, lines, source, id };
   }
 
-  updateParentState() {
-    console.log(`in update parent state`)
-    this.props.navigation.state.params.updateParentState();
-  }
+  // updateParentState() {
+  //   console.log(`in update parent state`)
+  //   this.props.navigation.state.params.updateParentState();
+  // }
 
   savePoem() {
     AsyncStorage.getItem('uid')
@@ -26,7 +26,7 @@ class PoemDetail extends Component {
         .then((response) => {
           if(response.status == 200) {
             Alert.alert(`Successfully saved poem!`)
-            this.updateParentState();
+            //this.updateParentState();
           }
         })
       })
