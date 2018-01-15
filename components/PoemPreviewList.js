@@ -16,9 +16,13 @@ class PoemPreviewList extends Component {
     });
   }
 
+  updateSavedPoems() {
+    console.log(`update saved poems being called in parent`)
+  }
+
   openPoemDetailsScreen(cardIndex) {
     const poem = this.state.poems[cardIndex];
-    this.props.navigate('PoemDetails', { poem: poem });
+    this.props.navigate('PoemDetails', { poem: poem, updateParentState: this.updateSavedPoems.bind(this) });
   }
 
   render() {

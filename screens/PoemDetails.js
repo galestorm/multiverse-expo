@@ -10,23 +10,30 @@ class PoemDetail extends Component {
     super(props);
 
     const { title, author, lines, source, id } = this.props.navigation.state.params.poem;
+
     this.poem = { title, author, lines, source, id };
+  }
+
+  updateParentState() {
+    console.log(`in update parent state`)
+    this.props.navigation.state.params.updateParentState();
   }
 
   savePoem() {
     AsyncStorage.getItem('uid')
       .then((uid) => {
-        console.log(`saving poem: user is ${uid} and poem is ${this.poem.id}`)
         axios.post(`http://localhost:3000/saved_poems?uid=${uid}&poem_id=${this.poem.id}`)
         .then((response) => {
           if(response.status == 200) {
             Alert.alert(`Successfully saved poem!`)
+            this.updateParentState();
           }
         })
       })
   }
 
   render() {
+    console.log(`state is ${this.state}`)
     return (
       <ScrollView>
         <Card>

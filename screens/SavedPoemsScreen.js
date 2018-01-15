@@ -7,7 +7,7 @@ export default class SavedPoemsScreen extends React.Component {
     title: 'SavedPoems',
   };
 
-  componentDidMount() {
+  componentWillMount() {
     AsyncStorage.getItem('uid')
       .then((uid) => {
         axios.get(`http://localhost:3000/saved_poems?uid=${uid}`)
@@ -18,7 +18,6 @@ export default class SavedPoemsScreen extends React.Component {
   }
 
   render() {
-
     if (this.state) {
       return (
         <View style={styles.container}>
