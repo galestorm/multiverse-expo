@@ -19,6 +19,18 @@ class PoemDetail extends Component {
   //   this.props.navigation.state.params.updateParentState();
   // }
 
+  navigateToSavedPoems() {
+    // const self = this;
+    AsyncStorage.getItem('uid')
+      .then((uid) => {
+        axios.get(`http://localhost:3000/saved_poems?uid=${uid}`)
+          .then((response) => {
+            //this.setState({ saved_poems: response.data });
+            this.props.navigation.navigate('SavedPoems', { saved_poems: response.data });
+          });
+      });
+  }
+
   savePoem() {
     AsyncStorage.getItem('uid')
       .then((uid) => {
@@ -28,6 +40,7 @@ class PoemDetail extends Component {
             Alert.alert(`Successfully saved poem!`)
             //this.updateParentState();
           }
+          this.navigateToSavedPoems();
         })
       })
   }

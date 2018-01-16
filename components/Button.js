@@ -26,7 +26,7 @@ const styles = {
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
-    padingBottom: 10,
+    paddingBottom: 10,
   },
 };
 
