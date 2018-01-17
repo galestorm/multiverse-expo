@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, Alert, ScrollView, AsyncStorage } from 'react-native';
+import axios from 'axios';
 import Card from '../components/Card';
 import CardSection from '../components/CardSection';
 import Button from '../components/Button';
-import axios from 'axios';
+
 
 class PoemDetail extends Component {
   constructor(props) {
@@ -14,18 +15,11 @@ class PoemDetail extends Component {
     this.poem = { title, author, lines, source, id };
   }
 
-  // updateParentState() {
-  //   console.log(`in update parent state`)
-  //   this.props.navigation.state.params.updateParentState();
-  // }
-
   navigateToSavedPoems() {
-    // const self = this;
     AsyncStorage.getItem('uid')
       .then((uid) => {
         axios.get(`http://localhost:3000/saved_poems?uid=${uid}`)
           .then((response) => {
-            //this.setState({ saved_poems: response.data });
             this.props.navigation.navigate('SavedPoems', { saved_poems: response.data });
           });
       });
@@ -35,18 +29,20 @@ class PoemDetail extends Component {
     AsyncStorage.getItem('uid')
       .then((uid) => {
         axios.post(`http://localhost:3000/saved_poems?uid=${uid}&poem_id=${this.poem.id}`)
-        .then((response) => {
-          if(response.status == 200) {
-            Alert.alert(`Successfully saved poem!`)
-            //this.updateParentState();
-          }
-          this.navigateToSavedPoems();
-        })
-      })
+          .then((response) => {
+            if (response.status === 200) {
+              Alert.alert('Successfully saved poem!');
+            }
+            this.navigateToSavedPoems();
+          });
+      });
+  }
+
+  navigateToCamera() {
+    this.props.navigation.navigate('CameraScreen');
   }
 
   render() {
-    console.log(`state is ${this.state}`)
     return (
       <ScrollView>
         <Card>
@@ -65,6 +61,10 @@ class PoemDetail extends Component {
           <CardSection>
             <Button onPress={() => this.savePoem()} />
           </CardSection>
+          <CardSection>
+            <Text>Experiences</Text>
+            <Button onPress={() => this.navigateToCamera()} />
+          </CardSection>
         </Card>
       </ScrollView>
     );
@@ -74,11 +74,11 @@ class PoemDetail extends Component {
 const styles = {
   headerContentStyle: {
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   headerTextStyle: {
-    fontSize: 18
+    fontSize: 18,
   },
-}
+};
 
 export default PoemDetail;

@@ -16,21 +16,12 @@ class PoemPreviewList extends Component {
     });
   }
 
-  // updateSavedPoems() {
-  //   console.log(`update saved poems being called in parent`)
-  //   this.props.updateParentState();
-  // }
-
-
-
   openPoemDetailsScreen(cardIndex) {
     const poem = this.state.poems[cardIndex];
     this.props.navigate('PoemDetails', { poem: poem });
-    //this.props.navigate('PoemDetails', { poem: poem, updateParentState: this.updateSavedPoems.bind(this) });
   }
 
   render() {
-    console.log(`rendering... state is ${this.state.poems.length}`);
     if (this.state.poems.length !== 0) {
       return (
         <View style={styles.container}>
@@ -60,18 +51,10 @@ class PoemPreviewList extends Component {
             renderCard={(card) => {
               return (
                 <View style={styles.card}>
-                  <Text style={styles.text}>...</Text>
+                  <Text style={styles.noResults}>...</Text>
                 </View>
               );
             }}
-            onSwiped={(cardIndex) => { console.log(cardIndex); }}
-            onSwipedAll={() => { console.log('onSwipedAll'); }}
-            onSwipedRight={(cardIndex) => {
-              return (
-                <PoemDetail />
-              );
-            }}
-            cardIndex={0}
             backgroundColor="#4FD0E9"
           >
           </Swiper>
@@ -99,6 +82,11 @@ const styles = {
     fontSize: 25,
     backgroundColor: 'transparent',
     paddingLeft: 20,
+  },
+  noResults: {
+    textAlign: 'center',
+    fontSize: 45,
+    backgroundColor: 'transparent',
   },
 };
 
