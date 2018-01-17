@@ -8,10 +8,10 @@ class Discover extends Component {
 
   componentWillMount() {
     const getPoems = () => {
-      axios.get(`http://localhost:3000/weather?lat=${this.state.lat}&lon=${this.state.lng}`)
+      axios.get(`https://multiverse-api.herokuapp.com/weather?lat=${this.state.lat}&lon=${this.state.lng}`)
         .then((weatherResponse) => {
           const weatherDescription = weatherResponse.data.weather[0].main;
-          axios.get(`http://localhost:3000/poems?query=${weatherDescription}`)
+          axios.get(`https://multiverse-api.herokuapp.com/poems?query=${weatherDescription}`)
             .then((poemsResponse) => {
               this.setState({ poems: poemsResponse.data });
             });

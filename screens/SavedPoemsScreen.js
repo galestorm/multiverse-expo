@@ -10,7 +10,7 @@ export default class SavedPoemsScreen extends React.Component {
   componentWillMount() {
     AsyncStorage.getItem('uid')
       .then((uid) => {
-        axios.get(`http://localhost:3000/saved_poems?uid=${uid}`)
+        axios.get(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}`)
           .then((response) => {
             this.setState({ saved_poems: response.data });
           });
@@ -26,7 +26,7 @@ export default class SavedPoemsScreen extends React.Component {
   getSavedPoems() {
     AsyncStorage.getItem('uid')
       .then((uid) => {
-        axios.get(`http://localhost:3000/saved_poems?uid=${uid}`)
+        axios.get(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}`)
           .then((response) => {
             this.setState({ saved_poems: response.data });
           });

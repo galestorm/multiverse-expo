@@ -25,9 +25,10 @@ export default class LoginScreen extends React.Component {
         if (type === 'success') {
           fetch(`https://graph.facebook.com/me?access_token=${token}`)
             .then((data) => {
+              console.log('got me a token')
               data.json()
                 .then((parsed) => {
-                  axios.post(`http://localhost:3000/users?uid=${parsed.id}&name=${parsed.name}`)
+                  axios.post(`https://multiverse-api.herokuapp.com/users?uid=${parsed.id}&name=${parsed.name}`)
                     .then(() => {
                         Alert.alert(`Welcome, ${parsed.name}`);
                         onSignIn(parsed.id)

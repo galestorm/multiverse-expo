@@ -18,7 +18,7 @@ class PoemDetail extends Component {
   navigateToSavedPoems() {
     AsyncStorage.getItem('uid')
       .then((uid) => {
-        axios.get(`http://localhost:3000/saved_poems?uid=${uid}`)
+        axios.get(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}`)
           .then((response) => {
             this.props.navigation.navigate('SavedPoems', { saved_poems: response.data });
           });
@@ -28,7 +28,7 @@ class PoemDetail extends Component {
   savePoem() {
     AsyncStorage.getItem('uid')
       .then((uid) => {
-        axios.post(`http://localhost:3000/saved_poems?uid=${uid}&poem_id=${this.poem.id}`)
+        axios.post(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}&poem_id=${this.poem.id}`)
           .then((response) => {
             if (response.status === 200) {
               Alert.alert('Successfully saved poem!');
@@ -39,7 +39,7 @@ class PoemDetail extends Component {
   }
 
   navigateToCamera() {
-    this.props.navigation.navigate('CameraScreen');
+    this.props.navigation.navigate('CameraScreen', { poem: this.poem });
   }
 
   render() {

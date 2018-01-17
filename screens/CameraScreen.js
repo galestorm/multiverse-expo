@@ -28,7 +28,7 @@ export default class CameraScreen extends React.Component {
     whiteBalance: 'auto',
     ratio: '16:9',
     ratios: [],
-    photoId: 1,
+    photoId: 0,
     photos: [],
     permissionsGranted: false,
   };
@@ -106,13 +106,15 @@ export default class CameraScreen extends React.Component {
   takePicture = async function() {
     if (this.camera) {
       this.camera.takePictureAsync().then(data => {
+        const now = Date.now()/1000
         FileSystem.moveAsync({
           from: data.uri,
-          to: `${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
+          to: `${FileSystem.documentDirectory}photos/Photo_${now}.jpg`,
         }).then(() => {
           this.setState({
-            photoId: this.state.photoId + 1,
+            photoId: now,
           });
+          this.navigateToCreateExperience();
         });
       });
     }
@@ -124,7 +126,8 @@ export default class CameraScreen extends React.Component {
   // }
 
   navigateToCreateExperience() {
-    this.props.navigation.navigate('CreateExperience');
+    const poem = this.props.navigation.state.params.poem
+    this.props.navigation.navigate('CreateExperience', { poem: poem, photoId: this.state.photoId });
   }
 
   renderNoPermissions() {
@@ -214,13 +217,9 @@ export default class CameraScreen extends React.Component {
           <TouchableOpacity
             style={[styles.flipButton, styles.picButton, { flex: 0.3, alignSelf: 'flex-end' }]}
             onPress={this.takePicture.bind(this)}>
-            <Text style={styles.flipText}> Snap </Text>
+            <Text style={styles.flipText}> Capture </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.flipButton, styles.galleryButton, { flex: 0.25, alignSelf: 'flex-end' }]}
-            onPress={this.navigateToCreateExperience.bind(this)}>
-            <Text style={styles.flipText}> Continue </Text>
-          </TouchableOpacity>
+
         </View>
       </Camera>
     );
