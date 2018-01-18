@@ -106,7 +106,7 @@ export default class CameraScreen extends React.Component {
   takePicture = async function() {
     if (this.camera) {
       this.camera.takePictureAsync().then(data => {
-        const now = Date.now()/1000
+        const now = Date.now()
         FileSystem.moveAsync({
           from: data.uri,
           to: `${FileSystem.documentDirectory}photos/Photo_${now}.jpg`,
