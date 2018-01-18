@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const Button = ({ onPress }) => { //destructured props obj
+const Button = ({ onPress, text }) => { //destructured props obj
   const { buttonStyle, textStyle } = styles;
 
   return (
     <TouchableOpacity onPress={onPress} style={buttonStyle}>
-      <Text style={textStyle}>Save for Later</Text>
+      <Text style={textStyle}>{text}</Text>
     </TouchableOpacity>
   );
 };

@@ -59,11 +59,10 @@ class PoemDetail extends Component {
             <Text>{this.poem.source}</Text>
           </CardSection>
           <CardSection>
-            <Button onPress={() => this.savePoem()} />
+            <Button onPress={() => this.savePoem()} text={'Save Poem'} />
           </CardSection>
           <CardSection>
-            <Text>Experiences</Text>
-            <Button onPress={() => this.navigateToCamera()} />
+            <Button onPress={() => this.navigateToCamera()} text={'Create Experience'} />
           </CardSection>
         </Card>
       </ScrollView>
