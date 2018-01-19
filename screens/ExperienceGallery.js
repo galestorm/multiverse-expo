@@ -12,13 +12,14 @@ export default class ExperienceGallery extends React.Component {
       .then((uid) => {
         axios.get(`https://multiverse-api.herokuapp.com/experiences?uid=${uid}`)
           .then((response) => {
+            console.log('setting state for experiences')
             this.setState({ experiences: response.data });
           });
       });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps != this.props) {
+    if (nextProps !== this.props) {
       this.getExperiences();
     }
   }
@@ -34,20 +35,22 @@ export default class ExperienceGallery extends React.Component {
   }
 
   render() {
-    if (this.props.navigation.state.params != undefined) {
-      return(
+    if (this.props.navigation.state.params !== undefined) {
+      return (
         <View>
           <FlatList data={this.props.navigation.state.params.experiences}
-          renderItem={({ item }) => <Text>{item.title}</Text>}
+          renderItem={({ item }) => <Text>{item.experience.title}</Text>}
           keyExtractor={(item, index) => index} />
         </View>
       );
     } else if (this.state) {
-      <View>
-        <FlatList data={this.state.experiences}
-        renderItem={({ item }) => <Text>{item.title}</Text>}
-        keyExtractor={(item, index) => index} />
-      </View>
+      return (
+        <View>
+          <FlatList data={this.state.experiences}
+          renderItem={({ item }) => <Text>{item.experience.title}</Text>}
+          keyExtractor={(item, index) => index} />
+        </View>
+      )
     }
     return null;
   }

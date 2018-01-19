@@ -1,6 +1,9 @@
 import React from 'react';
 import { Text, View, AsyncStorage, FlatList } from 'react-native';
 import axios from 'axios';
+import Header from '../components/Header';
+import ListItem from '../components/ListItem';
+
 
 export default class SavedPoemsScreen extends React.Component {
   static navigationOptions = {
@@ -33,20 +36,28 @@ export default class SavedPoemsScreen extends React.Component {
       });
   }
 
+  renderRow(item) {
+    return(
+      <ListItem savedPoem={item} navigate={this.props.navigation.navigate}/>
+    )
+  }
+
   render() {
     if (this.props.navigation.state.params !== undefined) {
       return (
-        <View>
+        <View style={styles.container}>
+          <Header headerText={'Saved Poems'}/>
           <FlatList data={this.props.navigation.state.params.saved_poems}
-          renderItem={({ item }) => <Text>{item.title}</Text>}
+          renderItem={({ item }) => this.renderRow(item)}
           keyExtractor={(item, index) => index} />
         </View>
       );
     } else if (this.state) {
       return (
-        <View>
+        <View style={styles.container}>
+          <Header headerText={'Saved Poems'}/>
           <FlatList data={this.state.saved_poems}
-          renderItem={({ item }) => <Text>{item.title}</Text>}
+          renderItem={({ item }) => this.renderRow(item)}
           keyExtractor={(item, index) => index} />
         </View>
       );

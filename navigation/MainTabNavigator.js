@@ -41,6 +41,7 @@ export const DiscoverStackNavigator = StackNavigator(
     },
   },
   {
+    //headerMode: 'none',
     initialRouteName: 'Discover',
   },
 );
@@ -52,9 +53,15 @@ export default TabNavigator(
     },
     SavedPoems: {
       screen: SavedPoemsScreen,
+      navigationOptions: {
+        title: 'Saved Poems',
+      },
     },
     ExperienceGallery: {
       screen: ExperienceGallery,
+      navigationOptions: {
+        title: 'Experience Gallery',
+      },
     },
     Settings: {
       screen: SettingsScreen,
