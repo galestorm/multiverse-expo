@@ -15,7 +15,6 @@ class ListItem extends Component {
       .then((uid) => {
         axios.delete(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}&poem_id=${savedPoem.id}`)
           .then(() => {
-            //this.props.handleDeletion();
             Alert.alert('Removing from Saved Poems')
             this.navigateToSavedPoems()
           });

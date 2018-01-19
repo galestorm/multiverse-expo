@@ -41,7 +41,7 @@ export default class SavedPoemsScreen extends React.Component {
     return(
       <ListItem savedPoem={item}
       navigate={this.props.navigation.navigate}
-      handleDeletion={() => this.getSavedPoems()}/>
+      />
     )
   }
 
@@ -73,7 +73,6 @@ export default class SavedPoemsScreen extends React.Component {
 const styles = {
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: '#fff',
   },
 };
