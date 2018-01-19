@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 import CardSection from './CardSection';
 
 class ListItem extends Component {
@@ -11,7 +12,13 @@ class ListItem extends Component {
   }
 
   deleteSavedPoem(savedPoem) {
-    console.log(savedPoem)
+    AsyncStorage.getItem('uid')
+      .then((uid) => {
+        axios.delete(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}&poem_id=${savedPoem.id}`)
+          .then(() => {
+            this.props.handleDeletion();
+          });
+      });
   }
 
   render() {

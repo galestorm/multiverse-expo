@@ -38,7 +38,9 @@ export default class SavedPoemsScreen extends React.Component {
 
   renderRow(item) {
     return(
-      <ListItem savedPoem={item} navigate={this.props.navigation.navigate}/>
+      <ListItem savedPoem={item}
+      navigate={this.props.navigation.navigate}
+      handleDeletion={() => this.getSavedPoems()}/>
     )
   }
 
