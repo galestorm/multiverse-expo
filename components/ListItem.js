@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, AsyncStorage } from 'react-native';
+import { Text, View, TouchableOpacity, AsyncStorage, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import CardSection from './CardSection';
@@ -7,7 +7,6 @@ import CardSection from './CardSection';
 class ListItem extends Component {
 
   navigateToPoemDetails(savedPoem) {
-    console.log('navigating')
     this.props.navigate('PoemDetails', { poem: savedPoem })
   }
 
@@ -16,7 +15,19 @@ class ListItem extends Component {
       .then((uid) => {
         axios.delete(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}&poem_id=${savedPoem.id}`)
           .then(() => {
-            this.props.handleDeletion();
+            //this.props.handleDeletion();
+            Alert.alert('Removing from Saved Poems')
+            this.navigateToSavedPoems()
+          });
+      });
+  }
+
+  navigateToSavedPoems() {
+    AsyncStorage.getItem('uid')
+      .then((uid) => {
+        axios.get(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}`)
+          .then((response) => {
+            this.props.navigate('SavedPoems', { saved_poems: response.data });
           });
       });
   }

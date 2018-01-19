@@ -37,6 +37,7 @@ export default class SavedPoemsScreen extends React.Component {
   }
 
   renderRow(item) {
+    console.log('row is re-rendering')
     return(
       <ListItem savedPoem={item}
       navigate={this.props.navigation.navigate}
@@ -45,6 +46,7 @@ export default class SavedPoemsScreen extends React.Component {
   }
 
   render() {
+    console.log('list is re-rendering')
     if (this.props.navigation.state.params !== undefined) {
       return (
         <View style={styles.container}>
