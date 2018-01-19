@@ -12,6 +12,7 @@ import ExperienceGallery from '../screens/ExperienceGallery';
 import SettingsScreen from '../screens/SettingsScreen';
 import Discover from '../screens/Discover';
 import PoemDetails from '../screens/PoemDetails';
+import ExperienceDetails from '../screens/ExperienceDetails';
 
 export const DiscoverStackNavigator = StackNavigator(
   {
@@ -46,25 +47,65 @@ export const DiscoverStackNavigator = StackNavigator(
   },
 );
 
-export default TabNavigator(
+export const SavedPoemsStackNavigator = StackNavigator(
   {
-    DiscoverStackNavigator: {
-      screen: DiscoverStackNavigator,
-    },
     SavedPoems: {
       screen: SavedPoemsScreen,
       navigationOptions: {
         title: 'Saved Poems',
+        headerLeft: null,
       },
     },
+    PoemDetails: {
+      screen: PoemDetails,
+      navigationOptions: {
+        title: '',
+      },
+    },
+  },
+);
+
+export const ExperienceStackNavigator = StackNavigator(
+  {
     ExperienceGallery: {
       screen: ExperienceGallery,
       navigationOptions: {
         title: 'Experience Gallery',
       },
     },
+    ExperienceDetails: {
+      screen: ExperienceDetails,
+      navigationOptions: {
+        title: 'Your Experience',
+      },
+    },
+  },
+);
+
+export const Settings = StackNavigator(
+  {
     Settings: {
       screen: SettingsScreen,
+      navigationOptions: {
+        title: 'Profile',
+      },
+    },
+  },
+);
+
+export default TabNavigator(
+  {
+    DiscoverStackNavigator: {
+      screen: DiscoverStackNavigator,
+    },
+    SavedPoemsStackNavigator: {
+      screen: SavedPoemsStackNavigator,
+    },
+    ExperienceStackNavigator: {
+      screen: ExperienceStackNavigator,
+    },
+    Settings: {
+      screen: Settings,
     },
   },
   {
@@ -79,13 +120,13 @@ export default TabNavigator(
                 ? `ios-information-circle${focused ? '' : '-outline'}`
                 : 'md-information-circle';
             break;
-          case 'SavedPoems':
+          case 'SavedPoemsStackNavigator':
             iconName = Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-link';
             break;
           case 'DiscoverStackNavigator':
             iconName = Platform.OS === 'ios' ? `ios-compass${focused ? '' : '-outline'}` : 'md-link';
             break;
-          case 'ExperienceGallery':
+          case 'ExperienceStackNavigator':
             iconName = Platform.OS === 'ios' ? `ios-images${focused ? '' : '-outline'}` : 'md-link';
             break;
           case 'Settings':

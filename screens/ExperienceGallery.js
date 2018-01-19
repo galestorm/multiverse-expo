@@ -35,24 +35,22 @@ export default class ExperienceGallery extends React.Component {
           });
       });
   }
-  
+
 
   render() {
     if (this.props.navigation.state.params !== undefined) {
       return (
         <View>
-          <Header headerText={'Experience Gallery'}/>
           <FlatList data={this.props.navigation.state.params.experiences}
-          renderItem={({ item }) => <ThumbnailList experience={item.experience} poem={item.poem}/>}
+          renderItem={({ item }) => <ThumbnailList experience={item.experience} poem={item.poem} navigate={this.props.navigation.navigate} />}
           keyExtractor={(item, index) => index} />
         </View>
       );
     } else if (this.state) {
       return (
         <View>
-          <Header headerText={'Experience Gallery'}/>
           <FlatList data={this.state.experiences}
-          renderItem={({ item }) => <ThumbnailList experience={item.experience} poem={item.poem}/>}
+          renderItem={({ item }) => <ThumbnailList experience={item.experience} poem={item.poem} navigate={this.props.navigation.navigate} />}
           keyExtractor={(item, index) => index} />
         </View>
       )

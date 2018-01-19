@@ -5,7 +5,7 @@ import { FileSystem } from 'expo';
 export default class ThumbnailList extends Component {
 
   navigateToExperienceDetails() {
-    console.log('We out here navigating yall')
+    this.props.navigate('ExperienceDetails')
   }
   render() {
     const monthNames = ["January", "February", "March", "April", "May", "June",

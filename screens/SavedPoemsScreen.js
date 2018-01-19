@@ -50,7 +50,7 @@ export default class SavedPoemsScreen extends React.Component {
     if (this.props.navigation.state.params !== undefined) {
       return (
         <View style={styles.container}>
-          <Header headerText={'Saved Poems'}/>
+
           <FlatList data={this.props.navigation.state.params.saved_poems}
           renderItem={({ item }) => this.renderRow(item)}
           keyExtractor={(item, index) => index} />
@@ -59,7 +59,7 @@ export default class SavedPoemsScreen extends React.Component {
     } else if (this.state) {
       return (
         <View style={styles.container}>
-          <Header headerText={'Saved Poems'}/>
+        
           <FlatList data={this.state.saved_poems}
           renderItem={({ item }) => this.renderRow(item)}
           keyExtractor={(item, index) => index} />
