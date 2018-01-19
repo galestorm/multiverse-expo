@@ -4,8 +4,8 @@ import { ListItem, Thumbnail, Text, Body } from 'native-base';
 import { FileSystem } from 'expo';
 export default class ThumbnailList extends Component {
 
-  navigateToExperienceDetails() {
-    this.props.navigate('ExperienceDetails')
+  navigateToExperienceDetails(props) {
+    this.props.navigate('ExperienceDetails', { experience: props.experience, poem: props.poem })
   }
   render() {
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -17,7 +17,7 @@ export default class ThumbnailList extends Component {
     return (
         <ListItem>
             <Thumbnail square size={80} source={{ uri: `${FileSystem.documentDirectory}photos/Photo_${this.props.experience.photo_id}.jpg` }} />
-            <TouchableOpacity onPress={() => this.navigateToExperienceDetails()}>
+            <TouchableOpacity onPress={() => this.navigateToExperienceDetails(this.props)}>
               <Body>
                 <Text>{this.props.experience.title}</Text>
                 <Text note>{`${month} ${day}, ${year}`}</Text>
