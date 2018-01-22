@@ -20,12 +20,32 @@ export const DiscoverStackNavigator = StackNavigator(
       screen: Discover,
       navigationOptions: {
         title: 'Discover',
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Tangerine',
+          fontSize: 30
+        }
       },
     },
     PoemDetails: {
       screen: PoemDetails,
       navigationOptions: {
         title: '',
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Tangerine',
+          fontSize: 30
+        },
+        headerBackTitleStyle: {
+          color: 'white'
+        },
+        headerTintColor: 'white'
       },
     },
     CameraScreen: {
@@ -38,6 +58,18 @@ export const DiscoverStackNavigator = StackNavigator(
       screen: CreateExperience,
       navigationOptions: {
         title: 'Create Experience',
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Tangerine',
+          fontSize: 30
+        },
+        headerBackTitleStyle: {
+          color: 'white'
+        },
+        headerTintColor: 'white'
       },
     },
   },
@@ -54,12 +86,36 @@ export const SavedPoemsStackNavigator = StackNavigator(
       navigationOptions: {
         title: 'Saved Poems',
         headerLeft: null,
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Tangerine',
+          fontSize: 30
+        },
+        headerBackTitleStyle: {
+          color: 'white'
+        },
+        headerTintColor: 'white'
       },
     },
     PoemDetails: {
       screen: PoemDetails,
       navigationOptions: {
         title: '',
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Tangerine',
+          fontSize: 30
+        },
+        headerBackTitleStyle: {
+          color: 'white'
+        },
+        headerTintColor: 'white'
       },
     },
   },
@@ -70,13 +126,37 @@ export const ExperienceStackNavigator = StackNavigator(
     ExperienceGallery: {
       screen: ExperienceGallery,
       navigationOptions: {
-        title: 'Experience Gallery',
+        title: 'Experiences',
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Tangerine',
+          fontSize: 30
+        },
+        headerBackTitleStyle: {
+          color: 'white'
+        },
+        headerTintColor: 'white'
       },
     },
     ExperienceDetails: {
       screen: ExperienceDetails,
       navigationOptions: {
         title: 'Your Experience',
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Tangerine',
+          fontSize: 30
+        },
+        headerBackTitleStyle: {
+          color: 'white'
+        },
+        headerTintColor: 'white'
       },
     },
   },
@@ -87,7 +167,19 @@ export const Settings = StackNavigator(
     Settings: {
       screen: SettingsScreen,
       navigationOptions: {
-        title: 'Profile',
+        title: 'Settings',
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Tangerine',
+          fontSize: 30
+        },
+        headerBackTitleStyle: {
+          color: 'white'
+        },
+        headerTintColor: 'white'
       },
     },
   },

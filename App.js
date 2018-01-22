@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRootNavigator } from './navigation/RootNavigation';
 import { isSignedIn } from './auth';
+import { Font } from 'expo';
 
 export default class App extends React.Component {
   state = {
@@ -9,9 +10,19 @@ export default class App extends React.Component {
   };
 
   componentWillMount() {
-    isSignedIn()
-      .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
-      .catch(err => console.log(err));
+    Font.loadAsync({
+      'Tangerine': require('./assets/fonts/Tangerine-Bold.ttf'),
+    }).then(() => {
+      isSignedIn()
+        .then(res => this.setState({ signedIn: res, checkedSignIn: true }))
+        .catch(err => console.log(err));
+    })
+  }
+
+  componentDidMount() {
+    Font.loadAsync({
+      'Tangerine': require('./assets/fonts/Tangerine-Bold.ttf'),
+    });
   }
 
   render() {

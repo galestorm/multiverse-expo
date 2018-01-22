@@ -24,11 +24,13 @@ export default class SettingsScreen extends React.Component {
 
 const styles = {
   buttonContainer: {
-    marginTop: 50,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    flex: 1,
+    justifyContent: 'center',
   },
   button: {
     borderWidth: 2,
-    borderColor: 'black'
+    borderColor: 'black',
+    flex: 1,
   }
 }
