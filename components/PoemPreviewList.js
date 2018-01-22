@@ -30,7 +30,7 @@ class PoemPreviewList extends Component {
             renderCard={(card) => {
               return (
                 <View style={styles.card}>
-                  <Text style={styles.text} numberOfLines={5}>{card.lines}</Text>
+                  <Text style={styles.text} numberOfLines={10}>{card.lines}</Text>
                 </View>
               );
             }}
@@ -79,7 +79,8 @@ const styles = {
   },
   text: {
     textAlign: 'left',
-    fontSize: 25,
+    lineHeight: 25,
+    fontSize: 18,
     backgroundColor: 'transparent',
     paddingLeft: 20,
   },

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { ListItem, Thumbnail, Text, Body } from 'native-base';
 import { FileSystem } from 'expo';
+import { Ionicons } from '@expo/vector-icons';
+
+
 export default class ThumbnailList extends Component {
 
   navigateToExperienceDetails(props) {
@@ -17,11 +20,17 @@ export default class ThumbnailList extends Component {
     return (
         <ListItem>
             <Thumbnail square size={80} source={{ uri: `${FileSystem.documentDirectory}photos/Photo_${this.props.experience.photo_id}.jpg` }} />
-            <TouchableOpacity onPress={() => this.navigateToExperienceDetails(this.props)}>
-              <Body>
-                <Text>{this.props.experience.title}</Text>
-                <Text note>{`${month} ${day}, ${year}`}</Text>
-              </Body>
+            <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.navigateToExperienceDetails(this.props)}>
+                <Body>
+                  <Text>{this.props.experience.title}</Text>
+                  <Text note>{`${month} ${day}, ${year}`}</Text>
+                </Body>
+                <View style={{marginRight: 65}}>
+                <Ionicons
+                  name={`ios-arrow-forward`}
+                  size={28}
+                />
+                </View>
             </TouchableOpacity>
         </ListItem>
     );

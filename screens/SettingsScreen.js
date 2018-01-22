@@ -13,6 +13,7 @@ export default class SettingsScreen extends React.Component {
     return (
       <View style={styles.buttonContainer}>
         <Button
+          style={styles.button}
           title="SIGN OUT"
           onPress={() => onSignOut().then(() => this.props.navigation.navigate("Login"))}
           />
@@ -23,6 +24,11 @@ export default class SettingsScreen extends React.Component {
 
 const styles = {
   buttonContainer: {
-    marginTop: 50
+    marginTop: 50,
+    backgroundColor: 'white'
+  },
+  button: {
+    borderWidth: 2,
+    borderColor: 'black'
   }
 }

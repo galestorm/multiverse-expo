@@ -42,21 +42,15 @@ export default class LoginScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.FbContainer}>
         <View>
           <Button
             onPress={this.logIn.bind(this)}
-            title='Log in with Facebook'
+            title='Login with Facebook'
           />
         </View>
 
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <Text style={styles.codeHighlightText}>navigation/MainTabNavigator.js</Text>
-          </View>
-        </View>
       </View>
     );
   }
@@ -93,10 +87,10 @@ export default class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 50,
+  FbContainer: {
+    paddingTop: 100,
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
   },
   developmentModeText: {
     marginBottom: 20,

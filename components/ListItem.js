@@ -32,11 +32,12 @@ class ListItem extends Component {
   }
 
   render() {
-    const {titleStyle} = styles;
+    const {titleStyle, lineStyle} = styles;
     return (
       <CardSection>
         <View style={styles.poemContainer}>
           <Text style={titleStyle}>{this.props.savedPoem.title}</Text>
+          <Text style={lineStyle} numberOfLines={1}>{this.props.savedPoem.lines}...</Text>
         </View>
         <TouchableOpacity onPress={() => this.navigateToPoemDetails(this.props.savedPoem)}>
           <View style={styles.iconContainer}>
@@ -64,13 +65,20 @@ const styles = {
     fontSize: 18,
     paddingLeft: 15,
   },
+  lineStyle: {
+    fontSize: 10,
+    paddingLeft: 15,
+    paddingTop: 5,
+  },
   poemContainer: {
     flex: 4,
+    justifyContent: 'center',
   },
   iconContainer: {
     flex: 1,
     alignItems: 'flex-end',
     paddingRight: 15,
+    paddingTop: 7,
   },
 };
 
