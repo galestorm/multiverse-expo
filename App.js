@@ -11,7 +11,7 @@ export default class App extends React.Component {
 
   componentWillMount() {
     Font.loadAsync({
-      'Tangerine': require('./assets/fonts/Tangerine-Bold.ttf'),
+      'Cabin': require('./assets/fonts/PoiretOne-Regular.ttf'),
     }).then(() => {
       isSignedIn()
         .then(res => this.setState({ signedIn: res, checkedSignIn: true }))

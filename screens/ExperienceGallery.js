@@ -41,7 +41,7 @@ export default class ExperienceGallery extends React.Component {
     if (this.props.navigation.state.params !== undefined) {
       return (
         <View style={{backgroundColor: 'white'}}>
-          <FlatList data={this.props.navigation.state.params.experiences}
+          <FlatList data={this.props.navigation.state.params.experiences.reverse()}
           renderItem={({ item }) => <ThumbnailList experience={item.experience} poem={item.poem} navigate={this.props.navigation.navigate} />}
           keyExtractor={(item, index) => index} />
         </View>
@@ -49,7 +49,7 @@ export default class ExperienceGallery extends React.Component {
     } else if (this.state) {
       return (
         <View style={{backgroundColor: 'white'}}>
-          <FlatList data={this.state.experiences}
+          <FlatList data={this.state.experiences.reverse()}
           renderItem={({ item }) => <ThumbnailList experience={item.experience} poem={item.poem} navigate={this.props.navigation.navigate} />}
           keyExtractor={(item, index) => index} />
         </View>

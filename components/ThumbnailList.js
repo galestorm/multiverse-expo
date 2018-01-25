@@ -18,14 +18,14 @@ export default class ThumbnailList extends Component {
     const month = monthNames[date.getMonth() + 1]
     const year = date.getFullYear();
     return (
-        <ListItem>
+        <ListItem style={{marginRight: 20 }}>
             <Thumbnail square size={80} source={{ uri: `${FileSystem.documentDirectory}photos/Photo_${this.props.experience.photo_id}.jpg` }} />
             <TouchableOpacity style={{flexDirection: 'row'}} onPress={() => this.navigateToExperienceDetails(this.props)}>
                 <Body>
-                  <Text>{this.props.experience.title}</Text>
+                  <Text style={{fontSize: 18}}>{this.props.experience.title}</Text>
                   <Text note>{`${month} ${day}, ${year}`}</Text>
                 </Body>
-                <View style={{marginRight: 65}}>
+                <View style={{marginRight: 45}}>
                 <Ionicons
                   name={`ios-arrow-forward`}
                   size={28}

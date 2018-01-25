@@ -20,7 +20,7 @@ class PoemDetail extends Component {
       .then((uid) => {
         axios.get(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}`)
           .then((response) => {
-            this.props.navigation.navigate('SavedPoems', { saved_poems: response.data });
+            this.props.navigation.navigate('SavedPoems', { saved_poems: response.data.reverse() });
           });
       });
   }
@@ -46,23 +46,20 @@ class PoemDetail extends Component {
     return (
       <ScrollView>
         <Card>
-          <CardSection>
-            <View style={styles.headerContentStyle}>
-              <Text style={styles.headerTextStyle}>{this.poem.title}</Text>
-              <Text>{this.poem.author}</Text>
-            </View>
+          <CardSection style={{flexDirection: 'column'}}>
+            <Text style={styles.headerTitle}>{this.poem.title}</Text>
+            <Text style={styles.headerSubtitle}>{this.poem.author}</Text>
+            <Text style={styles.lines}>{this.poem.lines}</Text>
           </CardSection>
           <CardSection>
-            <Text>{this.poem.lines}</Text>
-          </CardSection>
-          <CardSection>
-            <Text>{this.poem.source}</Text>
+            <Text style={styles.source}>{this.poem.source}</Text>
           </CardSection>
           <CardSection>
             <Button onPress={() => this.savePoem()} text={'Save Poem'} />
           </CardSection>
           <CardSection>
             <Button onPress={() => this.navigateToCamera()} text={'Create Experience'} />
+            <View style={{marginBottom: 20}}></View>
           </CardSection>
         </Card>
       </ScrollView>
@@ -75,9 +72,24 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-around',
   },
-  headerTextStyle: {
+  headerTitle: {
     fontSize: 18,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingBottom: 10
   },
+  headerSubtitle: {
+    paddingLeft: 10,
+    paddingBottom: 10
+  },
+  lines: {
+    paddingLeft: 10
+  },
+  source: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    fontSize: 10
+  }
 };
 
 export default PoemDetail;

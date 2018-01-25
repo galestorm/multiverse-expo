@@ -26,7 +26,7 @@ class ListItem extends Component {
       .then((uid) => {
         axios.get(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}`)
           .then((response) => {
-            this.props.navigate('SavedPoems', { saved_poems: response.data });
+            this.props.navigate('SavedPoems', { saved_poems: response.data.reverse() });
           });
       });
   }
@@ -34,7 +34,7 @@ class ListItem extends Component {
   render() {
     const {titleStyle, lineStyle} = styles;
     return (
-      <CardSection>
+      <View style={styles.container}>
         <View style={styles.poemContainer}>
           <Text style={titleStyle}>{this.props.savedPoem.title}</Text>
           <Text style={lineStyle} numberOfLines={1}>{this.props.savedPoem.lines}...</Text>
@@ -55,7 +55,7 @@ class ListItem extends Component {
             />
           </View>
         </TouchableOpacity>
-      </CardSection>
+      </View>
     );
   }
 }
@@ -80,6 +80,20 @@ const styles = {
     paddingRight: 15,
     paddingTop: 7,
   },
-};
+  container: {
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#D5D4DA',
+    borderWidth: 1,
+    paddingTop: 15,
+    paddingBottom: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    borderColor: '#fff',
+    position: 'relative',
+    },
+  };
 
 export default ListItem;

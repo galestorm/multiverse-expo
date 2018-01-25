@@ -52,6 +52,7 @@ export default class LoginScreen extends React.Component {
           <Text style={styles.title}>multiVerse</Text>
           <Text style={styles.subtitle}>live in poetry</Text>
           <Button
+            style={styles.button}
             onPress={this.logIn.bind(this)}
             title='Login with Facebook'
           />
@@ -100,13 +101,18 @@ const styles = StyleSheet.create({
 
   },
   title: {
-    fontSize: 80,
+    fontSize: 50,
     marginBottom: 5,
-    fontFamily: 'Tangerine',
-    color: '#310A31'
+    fontFamily: 'Cabin',
+    color: '#2B3D41'
   },
   subtitle: {
     fontSize: 20,
-    marginBottom: 70
+    marginBottom: 70,
+    color: '#2B3D41'
+  },
+  button: {
+    borderColor: '#2B3D41',
+    borderWidth: 2
   }
 });

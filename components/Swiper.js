@@ -796,10 +796,10 @@ Swiper.defaultProps = {
   animateCardOpacity: false,
   animateOverlayLabelsOpacity: false,
   backgroundColor: '#4FD0E9',
-  cardHorizontalMargin: 20,
+  cardHorizontalMargin: 10,
   cardIndex: 0,
   cardStyle: {},
-  cardVerticalMargin: 20,
+  cardVerticalMargin: 10,
   childrenOnTop: false,
   disableBottomSwipe: false,
   disableLeftSwipe: false,
@@ -825,7 +825,7 @@ Swiper.defaultProps = {
     height / 4
   ],
   inputRotationRange: [-width / 2, 0, width / 2],
-  marginBottom: 170,
+  marginBottom: 115,
   marginTop: 0,
   onSwiped: cardIndex => {
     console.log(cardIndex)

@@ -79,10 +79,11 @@ const styles = {
   },
   text: {
     textAlign: 'left',
-    lineHeight: 25,
+    lineHeight: 30,
     fontSize: 18,
     backgroundColor: 'transparent',
     paddingLeft: 20,
+    paddingRight: 20
   },
   noResults: {
     textAlign: 'center',

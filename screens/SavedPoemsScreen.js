@@ -15,7 +15,7 @@ export default class SavedPoemsScreen extends React.Component {
       .then((uid) => {
         axios.get(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}`)
           .then((response) => {
-            this.setState({ saved_poems: response.data });
+            this.setState({ saved_poems: response.data.reverse() });
           });
       });
   }
@@ -31,7 +31,7 @@ export default class SavedPoemsScreen extends React.Component {
       .then((uid) => {
         axios.get(`https://multiverse-api.herokuapp.com/saved_poems?uid=${uid}`)
           .then((response) => {
-            this.setState({ saved_poems: response.data });
+            this.setState({ saved_poems: response.data.reverse() });
           });
       });
   }
@@ -59,7 +59,7 @@ export default class SavedPoemsScreen extends React.Component {
     } else if (this.state) {
       return (
         <View style={styles.container}>
-        
+
           <FlatList data={this.state.saved_poems}
           renderItem={({ item }) => this.renderRow(item)}
           keyExtractor={(item, index) => index} />

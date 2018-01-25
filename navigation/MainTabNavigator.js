@@ -25,8 +25,8 @@ export const DiscoverStackNavigator = StackNavigator(
         },
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'Tangerine',
-          fontSize: 30
+          fontFamily: 'Cabin',
+          fontSize: 23
         }
       },
     },
@@ -39,11 +39,13 @@ export const DiscoverStackNavigator = StackNavigator(
         },
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'Tangerine',
-          fontSize: 30
+          fontFamily: 'Cabin',
+          fontSize: 23
         },
         headerBackTitleStyle: {
-          color: 'white'
+          color: 'white',
+          fontFamily: 'Cabin',
+          fontSize: 18
         },
         headerTintColor: 'white'
       },
@@ -52,6 +54,15 @@ export const DiscoverStackNavigator = StackNavigator(
       screen: CameraScreen,
       navigationOptions: {
         title: 'Camera',
+        headerStyle: {
+          backgroundColor: '#2B3D41',
+        },
+        headerTitleStyle: {
+          color: 'white',
+          fontFamily: 'Cabin',
+          fontSize: 23
+        },
+        headerTintColor: 'white'
       },
     },
     CreateExperience: {
@@ -63,8 +74,8 @@ export const DiscoverStackNavigator = StackNavigator(
         },
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'Tangerine',
-          fontSize: 30
+          fontFamily: 'Cabin',
+          fontSize: 23
         },
         headerBackTitleStyle: {
           color: 'white'
@@ -91,8 +102,8 @@ export const SavedPoemsStackNavigator = StackNavigator(
         },
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'Tangerine',
-          fontSize: 30
+          fontFamily: 'Cabin',
+          fontSize: 23
         },
         headerBackTitleStyle: {
           color: 'white'
@@ -109,8 +120,8 @@ export const SavedPoemsStackNavigator = StackNavigator(
         },
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'Tangerine',
-          fontSize: 30
+          fontFamily: 'Cabin',
+          fontSize: 23
         },
         headerBackTitleStyle: {
           color: 'white'
@@ -132,8 +143,8 @@ export const ExperienceStackNavigator = StackNavigator(
         },
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'Tangerine',
-          fontSize: 30
+          fontFamily: 'Cabin',
+          fontSize: 23
         },
         headerBackTitleStyle: {
           color: 'white'
@@ -144,14 +155,14 @@ export const ExperienceStackNavigator = StackNavigator(
     ExperienceDetails: {
       screen: ExperienceDetails,
       navigationOptions: {
-        title: 'Your Experience',
+        title: '',
         headerStyle: {
           backgroundColor: '#2B3D41',
         },
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'Tangerine',
-          fontSize: 30
+          fontFamily: 'Cabin',
+          fontSize: 23
         },
         headerBackTitleStyle: {
           color: 'white'
@@ -173,8 +184,8 @@ export const Settings = StackNavigator(
         },
         headerTitleStyle: {
           color: 'white',
-          fontFamily: 'Tangerine',
-          fontSize: 30
+          fontFamily: 'Cabin',
+          fontSize: 23
         },
         headerBackTitleStyle: {
           color: 'white'
@@ -236,6 +247,9 @@ export default TabNavigator(
       },
     }),
     tabBarComponent: TabBarBottom,
+    tabBarOptions: {
+      showLabel: false,
+    },
     tabBarPosition: 'bottom',
     animationEnabled: false,
     swipeEnabled: false,

@@ -17,21 +17,26 @@ export default class ExperienceDetails extends Component {
     this.experience = { photo_id, notes, created_at };
   }
   render() {
-    console.log(this.props)
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+    date = new Date(this.experience.created_at);
+    const day = date.getDate();
+    const month = monthNames[date.getMonth() + 1];
+    const year = date.getFullYear();
     return (
       <ScrollView>
         <Card>
-          <CardSection>
-            <Text style={{fontSize: 18}}>{this.experience_title}</Text>
-          </CardSection>
-          <CardSection>
-            <Text>Notes: {this.experience.notes}</Text>
-          </CardSection>
-          <CardSection>
-            <Image source={{ uri: `${FileSystem.documentDirectory}photos/Photo_${this.experience.photo_id}.jpg` }} style={styles.imageStyle} />
-          </CardSection>
-          <CardSection>
-            <Text>{this.poem.lines}</Text>
+          <CardSection style={{flexDirection: 'row'}}>
+            <Text style={styles.expTitle}>{this.experience_title}</Text>
+            <Text style={styles.lines}>{`${month} ${day}, ${year}`}</Text>
+            <Text style={styles.notes}>Notes: {this.experience.notes}</Text>
+            <View style={styles.imageContainer}>
+              <Image source={{ uri: `${FileSystem.documentDirectory}photos/Photo_${this.experience.photo_id}.jpg` }} style={styles.imageStyle} />
+            </View>
+            <Text style={styles.expTitle}>{this.poem.title}</Text>
+            <Text style={styles.lines}>{this.poem.author}</Text>
+            <Text style={styles.lines}>{this.poem.lines}</Text>
+            <Text style={styles.source}>{this.poem.source}</Text>
           </CardSection>
         </Card>
       </ScrollView>
@@ -41,8 +46,36 @@ export default class ExperienceDetails extends Component {
 
 const styles = {
   imageStyle: {
-      height: 300,
+      height: 260,
       flex: 1,
-      width: null
-    }
+      width: 260,
+  },
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  expTitle: {
+    fontSize: 23,
+    // fontFamily: 'Cabin',
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingBottom: 10
+  },
+  notes: {
+    paddingLeft: 10,
+    paddingBottom: 10,
+    paddingRight: 10,
+    fontStyle: 'italic'
+  },
+  lines: {
+    paddingLeft: 10,
+    paddingBottom: 10
+  },
+  source: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    fontSize: 10
+  }
+
 };
